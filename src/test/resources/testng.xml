@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="RestfulBookerAPITestSuite" verbose="1">
+    <parameter name="baseUrl" value="https://restful-booker.herokuapp.com"/>
+    
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+    
+    <test name="SmokeTests" group-by-instances="true">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.restfulbooker.tests.BookingTests"/>
+            <class name="com.restfulbooker.tests.AuthTests"/>
+        </classes>
+    </test>
+    
+    <test name="RegressionTests" group-by-instances="true">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.restfulbooker.tests.BookingTests"/>
+            <class name="com.restfulbooker.tests.AuthTests"/>
+            <class name="com.restfulbooker.tests.BookingCRUDTests"/>
+        </classes>
+    </test>
+    
+    <test name="AllTests" group-by-instances="true">
+        <classes>
+            <class name="com.restfulbooker.tests.BookingTests"/>
+            <class name="com.restfulbooker.tests.AuthTests"/>
+            <class name="com.restfulbooker.tests.BookingCRUDTests"/>
+        </classes>
+    </test>
+</suite>
