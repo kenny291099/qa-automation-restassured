@@ -55,10 +55,19 @@ public class Configuration {
     }
     
     public int getRequestTimeout() {
-        return Integer.parseInt(getProperty("request.timeout", "30000"));
+        return Integer.parseInt(getProperty("request.timeout", "60000"));
+    }
+    
+    public int getConnectionTimeout() {
+        return Integer.parseInt(getProperty("connection.timeout", "30000"));
+    }
+    
+    public int getSocketTimeout() {
+        return Integer.parseInt(getProperty("socket.timeout", "90000"));
     }
     
     public boolean isLoggingEnabled() {
         return Boolean.parseBoolean(getProperty("logging.enabled", "true"));
     }
 }
+

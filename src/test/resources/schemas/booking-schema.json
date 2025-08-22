@@ -38,3 +38,5 @@
   "required": ["firstname", "lastname", "totalprice", "depositpaid", "bookingdates"],
   "additionalProperties": false
 }
+
+

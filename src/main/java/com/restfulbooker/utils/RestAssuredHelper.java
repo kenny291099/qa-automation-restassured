@@ -9,6 +9,8 @@ import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import com.restfulbooker.config.Configuration;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import static io.restassured.RestAssured.given;
 
@@ -30,16 +32,22 @@ public class RestAssuredHelper {
         RestAssured.baseURI = config.getBaseUrl();
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         
+        // Configure Jackson ObjectMapper with JSR310 support
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        
         // Configure object mapper
         RestAssured.config = RestAssuredConfig.config()
                 .objectMapperConfig(ObjectMapperConfig.objectMapperConfig()
-                        .defaultObjectMapperType(ObjectMapperType.JACKSON_2));
+                        .defaultObjectMapperType(ObjectMapperType.JACKSON_2)
+                        .jackson2ObjectMapperFactory((cls, charset) -> objectMapper));
         
-        // Add request timeout
+        // Add request timeouts with separate connection and socket timeouts
         RestAssured.config = RestAssured.config().httpClient(
                 RestAssured.config().getHttpClientConfig()
-                        .setParam("http.connection.timeout", config.getRequestTimeout())
-                        .setParam("http.socket.timeout", config.getRequestTimeout())
+                        .setParam("http.connection.timeout", config.getConnectionTimeout())
+                        .setParam("http.socket.timeout", config.getSocketTimeout())
+                        .setParam("http.connection-manager.timeout", config.getRequestTimeout())
         );
     }
     

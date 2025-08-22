@@ -1,9 +1,7 @@
 package com.restfulbooker.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -121,3 +119,4 @@ public class Booking {
                '}';
     }
 }
+

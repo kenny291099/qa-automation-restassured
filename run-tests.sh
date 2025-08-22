@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 
 # Script configuration
 SCRIPT_NAME=$(basename "$0")
-MAVEN_OPTS="-Xmx2048m"
+MAVEN_OPTS="-Xmx2048m -Djava.net.useSystemProxies=true -Dsun.net.useExclusiveBind=false"
 
 # Function to print colored output
 print_message() {
@@ -257,3 +257,5 @@ main() {
 
 # Execute main function with all arguments
 main "$@"
+
+

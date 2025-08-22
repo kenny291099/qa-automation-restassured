@@ -2,7 +2,6 @@ package com.restfulbooker.tests;
 
 import com.restfulbooker.base.BaseTest;
 import com.restfulbooker.models.Booking;
-import com.restfulbooker.models.BookingResponse;
 import com.restfulbooker.utils.ApiEndpoints;
 import com.restfulbooker.utils.RestAssuredHelper;
 import com.restfulbooker.utils.TestDataGenerator;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="RestfulBookerAPITestSuite" verbose="1">
+<suite name="RestfulBookerAPITestSuite" verbose="1" time-out="180000">
     <parameter name="baseUrl" value="https://restful-booker.herokuapp.com"/>
     
     <listeners>
@@ -40,3 +40,4 @@
         </classes>
     </test>
 </suite>
+
